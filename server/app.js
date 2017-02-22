@@ -39,7 +39,13 @@ app.get('/fish/last/name', function(req, res){
 app.post('/fish/new', function(req, res){
   var newFish = req.body;
   fishiesList.push(newFish);
-  res.sendStatus(200);
+  if (newFish.name !== "") {
+    res.sendStatus(200);
+  } else {
+    res.sendStatus(400);
+  }
+
+  //res.sendStatus(200);
 });
 
 

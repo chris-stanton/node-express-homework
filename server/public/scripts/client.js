@@ -35,7 +35,12 @@ $(document).ready(function(){
       success: function(response){
         console.log(response);
         getFishData();
-      }
+        if (true) {
+
+        } else {
+
+        }
+      }//end of response
     });
   });
 });
