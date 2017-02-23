@@ -45,7 +45,6 @@ app.post('/fish/new', function(req, res){
     res.sendStatus(400);
   }
 
-  //res.sendStatus(200);
 });
 
 

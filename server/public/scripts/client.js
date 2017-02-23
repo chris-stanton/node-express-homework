@@ -1,8 +1,11 @@
 console.log('sourced!');
 $(document).ready(function(){
   console.log('jquery was correctly sourced!');
+
   getFishData();
+
   function getFishData() {
+
     $.ajax({
       type: 'GET',
       url: '/fish',
@@ -13,7 +16,7 @@ $(document).ready(function(){
           $('#fishTank').append('<li>' + response[i].name + '</li>');
         }
       }
-    });
+    });//end of ajax
 
     $.ajax({
       type: 'GET',
@@ -22,25 +25,25 @@ $(document).ready(function(){
         console.log('response', response);
         $('#firstFishy').text(response);
       }
-    });
-  }
+    });//end of ajax
+  }//end of getFishData()
 
   $('#newFishButton').on('click', function(){
     var newFishObject = {};
+    $("#errorMessage").empty();
     newFishObject.name = $('#newFishName').val();
     $.ajax({
       type: 'POST',
       url: '/fish/new',
       data: newFishObject,
       success: function(response){
-        console.log(response);
         getFishData();
-        if (true) {
+      },
+      error: function (errorMesage){
+        $("#errorMessage").text("Please add a fish name");
 
-        } else {
 
-        }
       }//end of response
-    });
-  });
-});
+    });//end of ajax
+  });//end of click function
+});//end of doc.ready
